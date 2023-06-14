@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+  const getMusic = async(event) => {
+    // event.preventDefault() ; 
+    const response = await fetch(`
+      http://openapi.seoul.go.kr:8088/${process.env.REACT_APP_ART_KEY}/json/culturalEventInfo/1/10
+    `) ;
+    const json = await response.json() ; 
+    console.log(json.culturalEventInfo.row) ;
+    // console.log(json) ;
+  } ; 
+
+  useEffect(() => {
+    getMusic(); 
+  }, []); 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2> hi? </h2>
     </div>
   );
 }
