@@ -4,7 +4,6 @@ import { ApiContext } from "../Context/ApiContext.js";
 
 const Main = () => {
     const {api} = useContext(ApiContext) ;
-
     return (
         <div>
             {api.map((a, i) => (
